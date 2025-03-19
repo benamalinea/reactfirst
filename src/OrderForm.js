@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 
 const OrderForm = ({ addToCart }) => {
-
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [orderDetails, setOrderDetails] = useState('');
+  const [price, setPrice] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle order submission logic here
-    addToCart({ name, address, orderDetails });
-
+    addToCart({ name, address, orderDetails, price });
   };
 
   return (
@@ -39,6 +38,15 @@ const OrderForm = ({ addToCart }) => {
         <textarea
           value={orderDetails}
           onChange={(e) => setOrderDetails(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label>Price:</label>
+        <input
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
           required
         />
       </div>
