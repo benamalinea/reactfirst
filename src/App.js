@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
-import './App.css';
-import Menu from './Menu';
-import OrderForm from './OrderForm';
-import Cart from './Cart';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import CheckoutPage from './pages/CheckoutPage';
+import SupportPage from './pages/SupportPage';
 
-function App() {
-  const [cartItems, setCartItems] = useState([]);
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Welcome to the Modern Food Ordering Website</h1>
-      </header>
-      <Menu />
-      <OrderForm addToCart={setCartItems} />
-      <Cart cartItems={cartItems} />
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
+                <Route path="/support" element={<SupportPage />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
